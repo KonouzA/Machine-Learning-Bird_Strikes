@@ -1,0 +1,414 @@
+array(['Engine Shut Down', nan, 'Precautionary Landing', 'Other',
+       'Aborted Take-off'], dtype=object)
+RecordID	AircraftType	AirportName	AltitudeBin	MakeModel	NumberStruck	NumberStruckActual	Effect	FlightDate	Damage	...	RemainsSentToSmithsonian	Remarks	WildlifeSize	ConditionsSky	WildlifeSpecies	PilotWarned	Cost	Altitude	PeopleInjured	IsAircraftLarge?
+0	202152	Airplane	LAGUARDIA NY	(1000, 2000]	B-737-400	Over 100	859	Engine Shut Down	11/23/00 0:00	Caused damage	...	False	FLT 753. PILOT REPTD A HUNDRED BIRDS ON UNKN T...	Medium	No Cloud	Unknown bird - medium	N	30,736	1500	0	Yes
+1	208159	Airplane	DALLAS/FORT WORTH INTL ARPT	(-1, 0]	MD-80	Over 100	424	NaN	7/25/01 0:00	Caused damage	...	False	102 CARCASSES FOUND. 1 LDG LIGHT ON NOSE GEAR ...	Small	Some Cloud	Rock pigeon	Y	0	0	0	No
+2	207601	Airplane	LAKEFRONT AIRPORT	(30, 50]	C-500	Over 100	261	NaN	9/14/01 0:00	No damage	...	False	FLEW UNDER A VERY LARGE FLOCK OF BIRDS OVER AP...	Small	No Cloud	European starling	N	0	50	0	No
+3	215953	Airplane	SEATTLE-TACOMA INTL	(30, 50]	B-737-400	Over 100	806	Precautionary Landing	9/5/02 0:00	No damage	...	False	NOTAM WARNING. 26 BIRDS HIT THE A/C, FORCING A...	Small	Some Cloud	European starling	Y	0	50	0	Yes
+4	219878	Airplane	NORFOLK INTL	(30, 50]	CL-RJ100/200	Over 100	942	NaN	6/23/03 0:00	No damage	...	False	NO DMG REPTD.	Small	No Cloud	European starling	N	0	50	0	No
+5 rows × 26 columns
+
+(25429, 26)
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 25429 entries, 0 to 25428
+Data columns (total 26 columns):
+ #   Column                    Non-Null Count  Dtype 
+---  ------                    --------------  ----- 
+ 0   RecordID                  25429 non-null  int64 
+ 1   AircraftType              25429 non-null  object
+ 2   AirportName               25429 non-null  object
+ 3   AltitudeBin               25429 non-null  object
+ 4   MakeModel                 25429 non-null  object
+ 5   NumberStruck              25429 non-null  object
+ 6   NumberStruckActual        25429 non-null  int64 
+ 7   Effect                    2078 non-null   object
+ 8   FlightDate                25429 non-null  object
+ 9   Damage                    25429 non-null  object
+ 10  Engines                   25195 non-null  object
+ 11  Operator                  25429 non-null  object
+ 12  OriginState               24980 non-null  object
+ 13  FlightPhase               25429 non-null  object
+ 14  ConditionsPrecipitation   2015 non-null   object
+ 15  RemainsCollected?         25429 non-null  bool  
+ 16  RemainsSentToSmithsonian  25429 non-null  bool  
+ 17  Remarks                   20668 non-null  object
+ 18  WildlifeSize              25429 non-null  object
+ 19  ConditionsSky             25429 non-null  object
+...
+ 24  PeopleInjured             25429 non-null  int64 
+ 25  IsAircraftLarge?          25429 non-null  object
+dtypes: bool(2), int64(4), object(20)
+memory usage: 4.7+ MB
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+<Axes: >
+Effect                     23351
+Engines                      234
+OriginState                  449
+ConditionsPrecipitation    23414
+Remarks                     4761
+dtype: int64
+5
+Effect                     91.828228
+Engines                     0.920209
+OriginState                 1.765701
+ConditionsPrecipitation    92.075976
+Remarks                    18.722718
+dtype: float64
+Baseline Model Performance:
+              precision    recall  f1-score   support
+
+           0       0.82      0.35      0.49       736
+           1       0.93      0.99      0.96      6893
+
+    accuracy                           0.93      7629
+   macro avg       0.88      0.67      0.73      7629
+weighted avg       0.92      0.93      0.92      7629
+
+
+Confusion Matrix:
+[[ 260  476]
+ [  56 6837]]
+
+0
+                       count unique            top   freq
+Effect                                                   
+Aborted Take-off         479      2      No damage    351
+Engine Shut Down          88      2  Caused damage     78
+Other                    390      2      No damage    227
+Precautionary Landing   1121      2      No damage    579
+Unknown                23351      2      No damage  21808
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+File ~\AppData\Roaming\Python\Python312\site-packages\pandas\core\indexes\base.py:3805, in Index.get_loc(self, key)
+   3804 try:
+-> 3805     return self._engine.get_loc(casted_key)
+   3806 except KeyError as err:
+
+File index.pyx:167, in pandas._libs.index.IndexEngine.get_loc()
+
+File index.pyx:196, in pandas._libs.index.IndexEngine.get_loc()
+
+File pandas\\_libs\\hashtable_class_helper.pxi:7081, in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+File pandas\\_libs\\hashtable_class_helper.pxi:7089, in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'Effect'
+
+The above exception was the direct cause of the following exception:
+
+KeyError                                  Traceback (most recent call last)
+Cell In[19], line 1
+----> 1 class_percentages = df_raw['Effect'].value_counts(normalize=True) * 100
+      2 print(class_percentages)
+
+File ~\AppData\Roaming\Python\Python312\site-packages\pandas\core\frame.py:4102, in DataFrame.__getitem__(self, key)
+...
+   3815     #  InvalidIndexError. Otherwise we fall through and re-raise
+   3816     #  the TypeError.
+   3817     self._check_indexing_error(key)
+
+KeyError: 'Effect'
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+
+Results for Model with Flag:
+
+              precision    recall  f1-score   support
+
+           0       0.68      0.39      0.50       480
+           1       0.94      0.98      0.96      4606
+
+    accuracy                           0.92      5086
+   macro avg       0.81      0.69      0.73      5086
+weighted avg       0.91      0.92      0.92      5086
+
+ROC-AUC Score: 0.8633
+
+Feature Importance:
+                     feature  importance
+21                      Cost    0.488175
+17              WildlifeSize    0.245706
+26       Effect_Missing_Flag    0.112766
+19           WildlifeSpecies    0.027039
+15  RemainsSentToSmithsonian    0.025810
+22                  Altitude    0.022168
+4                  MakeModel    0.020760
+7                     Effect    0.016654
+16                   Remarks    0.014537
+...
+3                AltitudeBin    0.000000
+23             PeopleInjured    0.000000
+24          IsAircraftLarge?    0.000000
+13   ConditionsPrecipitation    0.000000
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+Percentage distribution of Damage for each Effect category:
+Damage                 Caused damage  No damage
+Effect                                         
+Aborted Take-off           26.722338  73.277662
+Engine Shut Down           88.636364  11.363636
+Other                      41.794872  58.205128
+Precautionary Landing      48.349688  51.650312
+
+Mutual Information Score between Effect and Damage: 0.0407
+
+Analyzing other features for Unknown Effect cases:
+
+Distribution of WildlifeSize for Unknown Effect:
+WildlifeSize
+Small     0.707165
+Medium    0.225986
+Large     0.066849
+Name: proportion, dtype: float64
+
+Distribution of FlightPhase for Unknown Effect:
+FlightPhase
+Approach        0.429532
+Landing Roll    0.210997
+Take-off run    0.169115
+Climb           0.156010
+...
+(50, 100]       0.062695
+(600, 1000]     0.059740
+(30, 50]        0.055801
+Name: proportion, dtype: float64
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+
+
+
+
+
+
+
+
+
+                         count unique        top   freq
+ConditionsPrecipitation                                
+Fog                        475      2  No damage    419
+Fog, Rain                   85      2  No damage     75
+Fog, Rain, Snow              3      1  No damage      3
+Fog, Snow                    4      1  No damage      4
+Rain                      1353      2  No damage   1197
+Rain, Snow                   6      2  No damage      5
+Snow                        89      2  No damage     78
+Unknown                  23414      2  No damage  21194
+Percentage distribution of Damage for each ConditionsPrecipitation category:
+Damage                   Caused damage   No damage
+ConditionsPrecipitation                           
+Fog                          11.789474   88.210526
+Fog, Rain                    11.764706   88.235294
+Fog, Rain, Snow               0.000000  100.000000
+Fog, Snow                     0.000000  100.000000
+Rain                         11.529933   88.470067
+Rain, Snow                   16.666667   83.333333
+Snow                         12.359551   87.640449
+
+Mutual Information Score between ConditionsPrecipitation_damage_dist and Damage: 0.0002
+
+Analyzing other features for Unknown ConditionsPrecipitation_damage_dist cases:
+
+Distribution of WildlifeSize for Unknown ConditionsPrecipitation_damage_dist:
+WildlifeSize
+Small     0.690484
+Medium    0.229478
+Large     0.080038
+Name: proportion, dtype: float64
+
+Distribution of FlightPhase for Unknown ConditionsPrecipitation_damage_dist:
+FlightPhase
+Approach        0.412574
+...
+(600, 1000]     0.062527
+(50, 100]       0.061075
+(30, 50]        0.053430
+Name: proportion, dtype: float64
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+Engines                      234
+OriginState                  449
+ConditionsPrecipitation    23414
+Remarks                     4761
+dtype: int64
+4
+Engines                     0.920209
+OriginState                 1.765701
+ConditionsPrecipitation    92.075976
+Remarks                    18.722718
+dtype: float64
+
+Mutual Information Score between ConditionsPrecipitation_damage_dist and Damage: 0.0573
+Original Class Distribution:
+Damage
+No damage        0.903483
+Caused damage    0.096517
+Name: proportion, dtype: float64
+
+Resampled Class Distribution:
+{'Caused damage': 0.5, 'No damage': 0.5}
+
+Classification Report:
+               precision    recall  f1-score   support
+
+Caused damage       0.56      0.50      0.53       736
+    No damage       0.95      0.96      0.95      6893
+
+     accuracy                           0.91      7629
+    macro avg       0.75      0.73      0.74      7629
+ weighted avg       0.91      0.91      0.91      7629
+
+
+Confusion Matrix:
+[[ 371  365]
+ [ 290 6603]]
+
+
+
+
+
+
+
+Confusion Matrix for Base Model:
+[[ 342  394]
+ [ 213 6680]]
+
+Classification Report for Base Model:
+               precision    recall  f1-score   support
+
+Caused damage       0.62      0.46      0.53       736
+    No damage       0.94      0.97      0.96      6893
+
+     accuracy                           0.92      7629
+    macro avg       0.78      0.72      0.74      7629
+ weighted avg       0.91      0.92      0.92      7629
+
+
+Applying SMOTE
+Confusion Matrix for SMOTE:
+[[ 321  415]
+ [ 265 6628]]
+
+Classification Report for SMOTE:
+               precision    recall  f1-score   support
+
+Caused damage       0.55      0.44      0.49       736
+    No damage       0.94      0.96      0.95      6893
+
+     accuracy                           0.91      7629
+    macro avg       0.74      0.70      0.72      7629
+ weighted avg       0.90      0.91      0.91      7629
+
+
+Applying ADASYN
+Confusion Matrix for ADASYN:
+[[ 319  417]
+ [ 258 6635]]
+
+Classification Report for ADASYN:
+               precision    recall  f1-score   support
+
+Caused damage       0.55      0.43      0.49       736
+    No damage       0.94      0.96      0.95      6893
+
+     accuracy                           0.91      7629
+    macro avg       0.75      0.70      0.72      7629
+ weighted avg       0.90      0.91      0.91      7629
+
+
+Applying Random Oversampling
+Confusion Matrix for Random Oversampling:
+[[ 419  317]
+ [ 498 6395]]
+
+Classification Report for Random Oversampling:
+               precision    recall  f1-score   support
+
+Caused damage       0.46      0.57      0.51       736
+    No damage       0.95      0.93      0.94      6893
+
+     accuracy                           0.89      7629
+    macro avg       0.70      0.75      0.72      7629
+ weighted avg       0.90      0.89      0.90      7629
+
+
+Applying Random Undersampling
+Confusion Matrix for Random Undersampling:
+[[ 563  173]
+ [1331 5562]]
+
+Classification Report for Random Undersampling:
+               precision    recall  f1-score   support
+
+Caused damage       0.30      0.76      0.43       736
+    No damage       0.97      0.81      0.88      6893
+
+     accuracy                           0.80      7629
+    macro avg       0.63      0.79      0.65      7629
+ weighted avg       0.90      0.80      0.84      7629
+
+
+Applying Cluster-Based Undersampling
+C:\Users\96653\AppData\Roaming\Python\Python312\site-packages\joblib\externals\loky\backend\context.py:136: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "C:\Users\96653\AppData\Roaming\Python\Python312\site-packages\joblib\externals\loky\backend\context.py", line 282, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+Confusion Matrix for Cluster-Based Undersampling:
+[[ 694   42]
+ [6192  701]]
+
+Classification Report for Cluster-Based Undersampling:
+               precision    recall  f1-score   support
+
+Caused damage       0.10      0.94      0.18       736
+    No damage       0.94      0.10      0.18      6893
+
+     accuracy                           0.18      7629
+    macro avg       0.52      0.52      0.18      7629
+ weighted avg       0.86      0.18      0.18      7629
+
+
+Applying NearMiss
+Confusion Matrix for NearMiss:
+[[ 631  105]
+ [3384 3509]]
+
+Classification Report for NearMiss:
+               precision    recall  f1-score   support
+
+Caused damage       0.16      0.86      0.27       736
+    No damage       0.97      0.51      0.67      6893
+
+     accuracy                           0.54      7629
+    macro avg       0.56      0.68      0.47      7629
+ weighted avg       0.89      0.54      0.63      7629
+
+
+Applying Hybrid (SMOTE + ENN)
+Confusion Matrix for Hybrid (SMOTE + ENN):
+[[ 368  368]
+ [ 413 6480]]
+
+Classification Report for Hybrid (SMOTE + ENN):
+               precision    recall  f1-score   support
+
+Caused damage       0.47      0.50      0.49       736
+    No damage       0.95      0.94      0.94      6893
+
+     accuracy                           0.90      7629
+    macro avg       0.71      0.72      0.71      7629
+ weighted avg       0.90      0.90      0.90      7629
+
+
+Cost-Sensitive Learning
+Confusion Matrix for Cost-Sensitive Learning:
+[[ 431  305]
+ [ 534 6359]]
+
+Classification Report for Cost-Sensitive Learning:
+               precision    recall  f1-score   support
+
+Caused damage       0.45      0.59      0.51       736
+    No damage       0.95      0.92      0.94      6893
+
+     accuracy                           0.89      7629
+    macro avg       0.70      0.75      0.72      7629
+ weighted avg       0.91      0.89      0.90      7629
+
