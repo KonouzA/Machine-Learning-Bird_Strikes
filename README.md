@@ -51,5 +51,5 @@ The notebook walks through the full data science and machine learning pipeline:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/bird-strike-modeling.git
-   cd bird-strike-modeling
+   git clone https://github.com/KonouzA/Machine-Learning-Bird_Strikes.git
+   cd Machine-Learning-Bird_Strikes
